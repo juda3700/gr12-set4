@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://unpkg.com/konva@8.3.2/konva.min.js"></script>
+<script src="lib/grid.js"></script>
+<title>U4A4 Demo</title>
+</head>
+<body>
+<div id="konvaCanvas"></div>
+<script>
+	'use strict'
+
+    let stage = new Konva.Stage({
+        container: 'konvaCanvas',
+        width: window.innerWidth,
+        height: window.innerHeight
+    });
+    let layer = new Konva.Layer();
+	stage.add(layer); // add the layer to the stage
+    addGrid(Konva, layer)
+
+    //----- Ignore everything above here for now -----//
+
+    class Triangle extends Konva.RegularPolygon {
+        constructor(x, y, size, color) {
+
+            // Call Konva's RegularPolygon constructor
+            super({
+                x: x,
+                y: y,
+                sides: 3,
+                radius: size,
+                fill: color,
+            })
+        }
+    }
+
+    let triangle = new Triangle(200, 200, 50, "blue")
+    layer.add(triangle)
+ 
+    //----- Ignore everything below here for now -----//
+
+</script>
+</body>
+</html>

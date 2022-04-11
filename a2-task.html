@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://unpkg.com/konva@8.3.2/konva.min.js"></script>
+<script src="lib/grid.js"></script>
+<script src="lib/world.js"></script>
+<script src="lib/robot.js"></script>
+<title>U4A2 Task</title>
+</head>
+<body>
+<div id="header" style="text-align: center">
+    <button id="startBtn" onclick="document.getElementById('startBtn').disabled = 'true'; start()">Start</button>
+</div>
+<div id="konvaCanvas"></div>
+<script>
+	'use strict'
+
+    let stage = new Konva.Stage({
+        container: 'konvaCanvas',
+        width: window.innerWidth,
+        height: window.innerHeight
+    });
+    let layer = new Konva.Layer();
+    stage.add(layer); // add the layer to the stage
+
+
+    //----- Ignore everything above here for now -----//
+
+    class SmarterRobot extends Robot {
+        constructor(world, x, y, color) {
+            super(world, x, y, color)
+        }
+
+        async turnAround() {
+
+        }
+
+        setColor(color) {
+
+        }
+
+        setScale(scale) {
+
+        }
+
+        tryPickUpBeeper() {
+
+        }
+
+        tryPutDownBeeper() {
+
+        }
+
+        async spin(numTimes)  {
+
+        }
+
+    }
+
+
+    let world = new World()
+    world.addBeeper(100, 100)
+    let karl = new SmarterRobot(world, 100, 200, "gray")
+
+    async function start() {
+
+        // Test your new class methods here
+
+    }
+
+
+    //----- Ignore everything below here for now -----//
+
+
+</script>
+</body>
+</html>

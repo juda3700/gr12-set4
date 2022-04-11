@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://unpkg.com/konva@8.3.2/konva.min.js"></script>
+<script src="lib/grid.js"></script>
+<script src="lib/world.js"></script>
+<script src="lib/robot.js"></script>
+<title>U4A2 Demo</title>
+</head>
+<body>
+<div id="header" style="text-align: center">
+    <button id="startBtn" onclick="document.getElementById('startBtn').disabled = 'true'; start()">Start</button>
+</div>
+<div id="konvaCanvas"></div>
+<script>
+	'use strict'
+
+    let stage = new Konva.Stage({
+        container: 'konvaCanvas',
+        width: window.innerWidth,
+        height: window.innerHeight
+    });
+    let layer = new Konva.Layer();
+	stage.add(layer); // add the layer to the stage
+    
+
+    //----- Ignore everything above here for now -----//
+
+    class DancingRobot extends Robot {
+        constructor(world, x, y, color) {
+            super(world, x, y, color)
+        }
+
+        async dance() {
+            let originalColor = this.color
+            let originalSpeed = this.speed
+            this.speed = 300
+            this.color = "yellow"
+            this.redraw()
+            await this.turnLeft()
+            this.color = "blue"
+            this.redraw()
+            await this.turnLeft()
+            this.color = "green"
+            this.redraw()
+            await this.turnLeft()
+            this.color = "pink"
+            this.redraw()
+            await this.turnLeft()
+            this.color = originalColor
+            this.redraw()
+            this.speed = originalSpeed
+        }
+
+    }
+
+
+    let world = new World()
+    let karl = new DancingRobot(world, 100, 200, "gray")
+
+    async function start() {
+
+        // Start coding here:
+        await karl.move(1)
+        await karl.dance()
+        await karl.move(2)
+        await karl.dance()
+    }
+
+    //----- Ignore everything below here for now -----//
+
+</script>
+</body>
+</html>
