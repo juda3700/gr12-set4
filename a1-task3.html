@@ -27,22 +27,36 @@
     //----- Ignore everything above here for now -----//
 
     let world = new World()
-    let karl = new Robot(world, 100, 50, "green")
+    let karl = new Robot(world, 50, 50, "green")
 
     world.addBeeper(200, 50)
     world.addBeeper(200, 200)
     world.addBeeper(50, 200)
     world.addBeeper(50, 50)
-
+    
     async function start() {
 
-        karl.turnRight()
-        while (!karl.isOnBeeper()) {
+        while (true)
+        {
+
+            //await karl.turnRight()
+            while (!karl.isOnBeeper()) {
+                await karl.move(1)
+            }
+            await karl.turnRight()
             await karl.move(1)
+            // if (karl.isOnBeeper() == true){
+
+            //     await karl.turnRight()
+            //     await karl.move(1)
+
+            // }
         }
-
+        //start()
     }
-
+  
+    start()
+    
     //----- Ignore everything below here for now -----//
 
 </script>

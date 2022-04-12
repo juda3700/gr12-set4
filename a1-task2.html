@@ -27,15 +27,71 @@
     //----- Ignore everything above here for now -----//
 
     // Create your world and robots here:
-
+    let world = new World()
+    let karl = new Robot(world, 500, 500, "green"  )
+    //let bob = new Robot()
 
     // Add beepers to your world here:
+   
+    
+    var x = 1000
+    var y = 700
+
+    world.addBeeper(x, y)
+
+
 
 
     async function start() {
-
+        console.log(karl.getX())
+        console.log(karl.getY())
         // Add action code here:
+        if(karl.getX()> x){
+            await karl.turnLeft()
+            //await karl.spin()
+            var left = true
+        }
+        if(karl.getX()< x){
+            await karl.turnRight()
+            karl.setColor = 'blue'
+            karl.redraw()
+            var left = false
+        }
+        while(karl.getX()!= x){
+            await karl.move(1)
+            
+        }
 
+
+        if(karl.getY()> y && left == true){
+            await karl.turnRight()
+            //await karl.spin()
+        }
+        if(karl.getY()> y && left == false){
+            await karl.turnLeft()
+            karl.setColor = 'blue'
+            karl.redraw()
+        }
+
+        if(karl.getY()< y && left == true){
+            await karl.turnLeft()
+            //await karl.spin()
+        }
+        if(karl.getY()< y && left == false){
+            await karl.turnRight()
+            karl.setColor = 'blue'
+            karl.redraw()
+        }
+
+
+
+
+        while(karl.getY()!= y){
+            await karl.move(1)
+        }
+
+
+        //await karl.trypickupbeeper()
     }
 
     //----- Ignore everything below here for now -----//

@@ -34,8 +34,45 @@
     world.addBeeper(300, 150)
 
     async function start() {
+        while(!karl.isOnBeeper()){
+            await karl.move(1)
+        }
+        karl.pickUpBeeper()
+        await karl.turnRight()
+        await karl.turnRight()
+        await karl.move(4)
+        karl.dropBeeper()
+        await karl.turnLeft()
+        await karl.move(2)
+        await karl.turnLeft()
 
-        // Start coding here:
+        while(!karl.isOnBeeper()){
+            await karl.move(1)
+        }
+        karl.pickUpBeeper()
+        await karl.turnRight()
+        await karl.turnRight()
+        await karl.move(4)
+        karl.dropBeeper()
+        await karl.turnLeft()
+        await karl.move(2)
+        await karl.turnLeft()
+
+        while(!karl.isOnBeeper()){
+            await karl.move(1)
+        }
+        karl.pickUpBeeper()
+        await karl.turnRight()
+        await karl.turnRight()
+        await karl.move(4)
+        karl.dropBeeper()
+        await karl.turnLeft()
+        await karl.move(2)
+        await karl.turnLeft()
+
+        
+
+        
 
     }
 
