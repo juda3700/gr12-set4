@@ -29,70 +29,87 @@
     // Create your world and robots here:
     let world = new World()
     let karl = new Robot(world, 500, 500, "green"  )
+    let bob = new Robot(world, 600, 400, "red")
     //let bob = new Robot()
 
     // Add beepers to your world here:
    
     
-    var x = 1000
-    var y = 700
+    var x1 = 50    //These determine where the beepers will be placed. x1 corresponds to karl. x2 corresponds to Bob. Change them to get different affects
+    var y1 = 700        // must be in  multiples of 50
 
-    world.addBeeper(x, y)
+    world.addBeeper(x1, y1)
+
+    var x2 = 1000
+    var y2 = 300
+
+    world.addBeeper(x2, y2)
 
 
 
 
-    async function start() {
-        console.log(karl.getX())
-        console.log(karl.getY())
+    async function start(x, y, name) {
+        console.log(name.getX())
+        console.log(name.getY())
         // Add action code here:
-        if(karl.getX()> x){
-            await karl.turnLeft()
-            //await karl.spin()
+        if(name.getX()> x){
+            await name.turnLeft()
+            name.scale = 1.5
+            name.speed = 250
+            name.redraw()
             var left = true
         }
-        if(karl.getX()< x){
-            await karl.turnRight()
-            karl.setColor = 'blue'
-            karl.redraw()
+        if(name.getX()< x){
+            await name.turnRight()
+            name.color = 'blue'
+            name.redraw()
             var left = false
         }
-        while(karl.getX()!= x){
-            await karl.move(1)
+        while(name.getX()!= x){
+            await name.move(1)
             
         }
 
 
-        if(karl.getY()> y && left == true){
-            await karl.turnRight()
+        if(name.getY()> y && left == true){
+            await name.turnRight()
             //await karl.spin()
         }
-        if(karl.getY()> y && left == false){
-            await karl.turnLeft()
-            karl.setColor = 'blue'
-            karl.redraw()
+        if(name.getY()> y && left == false){
+            await name.turnLeft()
+            name.setColor = 'blue'
+            name.redraw()
         }
 
-        if(karl.getY()< y && left == true){
-            await karl.turnLeft()
+        if(name.getY()< y && left == true){
+            await name.turnLeft()
             //await karl.spin()
         }
-        if(karl.getY()< y && left == false){
-            await karl.turnRight()
-            karl.setColor = 'blue'
-            karl.redraw()
+        if(name.getY()< y && left == false){
+            await name.turnRight()
+            name.setColor = 'green'
+            name.redraw()
         }
 
 
 
 
-        while(karl.getY()!= y){
-            await karl.move(1)
+        while(name.getY()!= y){
+            await name.move(1)
         }
 
+        if (left == true && name.isOnBeeper()== true){
+            await name.pickUpBeeper()
+            await name.move(1)
+            await name.dropBeeper()
+            
+        }
 
         //await karl.trypickupbeeper()
     }
+
+    start(x1, y1, karl)
+    start(x2, y2, bob)
 
     //----- Ignore everything below here for now -----//
 
