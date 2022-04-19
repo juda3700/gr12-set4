@@ -39,20 +39,15 @@
         while (true)
         {
 
-            //await karl.turnRight()
+            
             while (!karl.isOnBeeper()) {
                 await karl.move(1)
             }
             await karl.turnRight()
             await karl.move(1)
-            // if (karl.isOnBeeper() == true){
-
-            //     await karl.turnRight()
-            //     await karl.move(1)
-
-            // }
+           
         }
-        //start()
+       
     }
   
     start()

@@ -32,26 +32,39 @@
         }
 
         async turnAround() {
-
+            await this.turnRight()
+            await this.turnRight()
         }
 
         setColor(color) {
+            this.color = color
+            this.redraw()
 
         }
 
         setScale(scale) {
-
+            this.scale = scale
+            this.redraw()
         }
 
         tryPickUpBeeper() {
+            if(this.isOnBeeper()==true){
+                this.pickUpBeeper()
+            }
 
         }
 
-        tryPutDownBeeper() {
-
-        }
+        // tryPutDownBeeper() {
+        //     if(this.isOnBeeper()== true){
+        //         this.dropBeeper()
+        //     }
+        // }
 
         async spin(numTimes)  {
+
+            for(var i = 0; i < numTimes*4; i++){
+                await this.turnRight()
+            }
 
         }
 
@@ -65,7 +78,19 @@
     async function start() {
 
         // Test your new class methods here
-
+        await karl.spin(1)
+        await karl.move(2)
+        karl.tryPickUpBeeper()
+        karl.setScale(3)
+        await karl.move(1)
+        await karl.turnAround()
+        await karl.move(1)
+        karl.setColor('red')
+        await karl.spin(3)
+        karl.speed = 300
+        //karl.tryPutDownBeeper()
+        await karl.move(10)
+        
     }
 
 

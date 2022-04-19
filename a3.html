@@ -20,18 +20,23 @@ class Student {
 
     // Returns the first name, followed by a space, followed by the last naem
     getFullName() {
-        
+        return(this.first +" "+this.last)
     }
 
     // Adds a new mark (no changes needed)
     addMark(mark) {
         this.marks.push(mark)
+
     }
 
     // Returns the highest mark the student received
     getHighestMark() {
-        let max 
+        var max 
         for (let i = 0; i < this.marks.length; i++) {
+            if(i== 0 || this.marks[i] >= max ){
+                max = this.marks[i]
+            }
+
             // Check to see if i is zero or if this.marks[i] is greater than max,
             // and if either is true, then set max equal to this.marks[i]
         }
@@ -40,15 +45,27 @@ class Student {
 
     // Returns the lowest mark the student received
     getLowestMark() {
-        
+        var low 
+        for(let i = 0; i < this.marks.length; i++){
+            if(i== 0 || this.marks[i] <= low ){
+                low = this.marks[i]
+            }
+        }
+        return low
     }
 
     getAverageMark() {
-        let total = 0
+        var total = 0
+
+        for(let i = 0; i < this.marks.length; i++){
+            total += this.marks[i]
+        }
+        var avg = total/this.marks.length
         // Use a `for` loop to go through all the marks, and increase `total` by each
         // mark in the array
 
         // return the average, which will be equal to the total divided by `this.marks.length`
+        return(avg)
     }
 
 }
