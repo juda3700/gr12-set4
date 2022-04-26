@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>U4 Review</title>
+</head>
+<body>
+<h1>Open the console to see the output of this program.</h1>
+<script>
+
+class Product {
+    constructor(name, price) {
+        this.name = name
+        this.price = price
+        this.isReduced = false
+    }
+
+    getTax() {
+        tax = this.price * 0.13
+        return tax
+    }
+
+    reduceTenPercent() {
+        this.price *= 0.9
+        this.isReduced = true
+
+    }
+}
+
+// Create and test out your toothpaste product below here:
+
+</script>
+</body>
+</html>

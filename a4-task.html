@@ -24,6 +24,18 @@
     //----- Ignore everything above here for now -----//
 
     // Add your code here:
+    class Hexagon extends Konva.RegularPolygon{
+        constructor(x, y, size, color) {
+            super({
+                x: x,
+                y: y,
+                sides: 6,
+                radius: size,
+                fill: color,
+            })
+        }
+
+    }
 
 
  
