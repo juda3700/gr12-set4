@@ -33,9 +33,48 @@
                 radius: size,
                 fill: color,
             })
+            this.size = size
+        }
+
+        grow(){
+            let size = this.size*2
+            this.radius(size)
+            
         }
 
     }
+
+    class Square extends Konva.Rect{
+        constructor(x, y, side, color) {
+            super({
+                x: x,
+                y: y,
+                width: side,
+                height: side,
+                fill: color,
+            })
+            this.side = side
+        }
+
+        changeHieght (){
+            let length = this.side*2
+            this.width(length)
+            
+        }
+
+    }
+
+    let hexagon = new Hexagon(500, 500, 100, 'red')
+
+    layer.add(hexagon)
+    
+    hexagon.grow()
+
+    let square = new Square(750, 750, 75, 'blue')
+
+    layer.add(square)
+
+    square.changeHieght()
 
 
  
